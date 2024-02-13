@@ -1,0 +1,197 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+<head>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
+    <style>
+        body{
+            background-color: black;
+        }
+        .cart-prod-cont {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column-reverse;
+        }
+
+        .cart-product {
+            height: 33vh;
+            margin: 3px;
+            display: flex;
+            width: 100%;
+            border-radius: 10px;
+            border: 2px solid rgba(0, 0, 0, 0.168);
+            background-color: rgba(0, 254, 254, 0.103);
+            padding: 3.5px;
+        }
+
+        .img-cont {
+            height: 100%;
+            width: 27vh;
+        }
+
+        .img-cont img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .data {
+            padding: 0vh 4vh;
+            width: calc(100% - 30vh);
+        }
+
+        .cart-title {
+            font-size: 1.7rem;
+            color: white;
+        }
+
+        .cart-brand {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.507);
+        }
+
+        .quantity .btn {
+            padding: 4px 8px;
+        }
+
+        .quantity .quant {
+            padding: 4px 8px;
+            color: white;
+        }
+
+        .cart-qunt-price {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            /* margin-top: 5vh; */
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: 500;
+            /* background-color: rgb(255, 255, 255); */
+            padding: 2px 12px;
+            color: rgb(47, 255, 0);
+            border-radius: 10px;
+        }
+        .cart-message{
+            color: rgba(255, 255, 255, 0.706);
+            font-size: 2.5rem;
+        }
+        .cart-message-cont{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .cart-message-cont svg{
+            width: 20vh;
+            height: 20vh;
+            color: aliceblue;
+        }
+        .btn-shopbtn{
+            padding: 1vh 4vh;
+            margin-top: 4px;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            background-color: aqua;
+        }
+        .btn-shopbtn:hover{
+            background-color: aqua;
+            margin-top: 1px;
+            border: 3px solid rgb(145, 255, 0);
+        }
+        .nav-item{
+            font-weight: 500;
+        }
+    </style>
+</head>
+<div class="container p-4 d-flex">
+    <div class="container cart-prod-cont" style="padding-bottom: 25vh;">
+        {% if cartprods %}
+            {% for i in cartprods %}
+                <div class="cart-product m-1">
+
+                    <div class="img-cont">
+                        <img src="{{ i.pid.image.url }}" alt="">
+                    </div>
+                    <div class="data">
+                        <h5 class="cart-title">{{ i.pid.pname }}</h5>
+                        <p class="cart-brand">{{ i.pid.pbrand }}</p>
+                        <div class="cart-qunt-price">
+
+                            <p class="price">{{ i.pid.disprice }} Rs</p>
+                            <div class="quantity">
+                                
+                                <a class="btn btn-danger" {% if i.quantity > 1 %} href="updatequantity/0/{{i.id}}" {% endif %}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-dash-lg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8" />
+                                    </svg>
+                                </a>
+                                
+                                <span class="quant">{{ i.quantity }}</span>
+
+                                <a href="updatequantity/1/{{i.id}}" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                        fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd"
+                                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
+                                    </svg></a>                            
+                            </div>
+                            
+                            
+                        </div>
+                        <div class="btn-cont">
+                            <a href="delcartitem/{{i.id}}" class="btn btn-warning">Delete</a>
+                        </div>
+
+                    </div>
+
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="cart-message-cont pt-5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M4.00436 6.41686L0.761719 3.17422L2.17593 1.76001L5.41857 5.00265H20.6603C21.2126 5.00265 21.6603 5.45037 21.6603 6.00265C21.6603 6.09997 21.6461 6.19678 21.6182 6.29L19.2182 14.29C19.0913 14.713 18.7019 15.0027 18.2603 15.0027H6.00436V17.0027H17.0044V19.0027H5.00436C4.45207 19.0027 4.00436 18.5549 4.00436 18.0027V6.41686ZM5.50436 23.0027C4.67593 23.0027 4.00436 22.3311 4.00436 21.5027C4.00436 20.6742 4.67593 20.0027 5.50436 20.0027C6.33279 20.0027 7.00436 20.6742 7.00436 21.5027C7.00436 22.3311 6.33279 23.0027 5.50436 23.0027ZM17.5044 23.0027C16.6759 23.0027 16.0044 22.3311 16.0044 21.5027C16.0044 20.6742 16.6759 20.0027 17.5044 20.0027C18.3328 20.0027 19.0044 20.6742 19.0044 21.5027C19.0044 22.3311 18.3328 23.0027 17.5044 23.0027Z"></path></svg>
+                <p class="cart-message">
+                    No Products In Your Cart
+                </p>
+                <a href="/allproducts/all" class="btn btn-shopbtn">Explore</a>
+            </div>        
+        {% endif %}
+
+    </div>
+    {% if cartprods %}
+        <div class="contain" style="position: fixed; bottom: 0; left: 0; width: 100%; background-color: rgb(0, 85, 98);">
+            <h4 style="color: white; text-align: center;">Bill Details</h4>
+            <div class="container p-3 d-flex align-items-center gap-5" style="color: azure;">
+                <div>
+                    
+                    <div>
+                        <span>Total Items : </span>
+                        <span>{{ totalprods }}</span>
+                    </div>
+                    <div>
+                        <span>Total Price : </span>
+                        <span>{{ totalamount }}</span>
+                    </div>
+                </div>
+                <div>
+                    <a href="/placeorder" class="btn btn-success">Proceed To Buy</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+    <!-- if there is no product in cart the price details bar is also gets hidden -->
+    {% endif %}
+
+
+</div>
+<script src="{static 'js\bootstrap.min.js'}"></script>
+
+{% endblock body %}

@@ -1,0 +1,227 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+  <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+  <style>
+    .rank {
+      font-size: 2.5rem;
+      font-weight: 500;
+      width: 3.5rem;
+      height: 3.5rem;
+      text-align: center;
+      position: absolute;
+      color: rgb(30, 255, 0);
+      background-color: rgba(0, 0, 0, 0.636);
+      padding: 0vh;
+      display: flex;
+      justify-content: center;
+      border-right: 2px solid rgba(85, 255, 0, 0.622);
+      border-bottom: 2px solid rgba(85, 255, 0, 0.711);
+      align-items: center;
+      border-radius: 0px 0px 30px 0px;
+    }
+
+    .carousel-inner {
+      padding: 0;
+      height: 85vh;
+    }
+
+    .carousel-inner img {
+      height: 85vh;
+      border-radius: 12px;
+      border: 2px solid rgb(0, 255, 0);
+    }
+
+    .carousel-data {
+      position: absolute;
+      text-align: center;
+    }
+
+    body {
+      background-color: black;
+    }
+    .minimized {
+      opacity: 0.8; /* Adjust the opacity value as needed */
+    }
+    .carousel-control-next-icon, .carousel-control-prev-icon{
+      width: 8vh;
+      height: 8vh;
+    }
+    .categories-cards{
+      margin-top: 6vh;
+    }
+    .categories-cards .card{
+      /* border: 1.9px solid rgb(0, 255, 0); */
+      background-color: rgb(49, 39, 39);
+      display: flex;
+      flex-direction: column;
+      /* justify-content: center; */
+      align-items: center;
+      padding: 2px;
+      margin: 4px;
+    }
+    .categories-cards .card img{
+      -webkit-filter: drop-shadow(5px 5px 5px #e5ff00);
+        filter: drop-shadow(5px 5px 5px #44ff00);
+    }
+    .categories-cards .card-text{
+      font-size: 1.2rem;
+      color: rgb(255, 255, 255);
+      font-weight: 500;
+      padding: 5px;
+    }
+    .cat-cards-cont{
+      display: flex;
+      overflow-x: auto;
+    }
+    .cat-cards-cont::-webkit-scrollbar{
+      display: none;
+    }
+    .img-trending-cards{
+      height: 13rem;
+    }
+    .card{
+      margin: 2px;
+    }
+    .card-title, .card-brand{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+  </style>
+</head>
+
+<body>
+  
+  <div class="container-fluid pt-3">
+    <!-- poster -->
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" style="transition: opacity 0.5s;">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{% static 'images\img1.webp' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images\img2.webp' %}" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{% static 'images\img3.webp' %}" class="d-block w-100" alt="...">
+        </div>
+      </div>
+      <button class="carousel-control-prev bg-black" type="button" data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next bg-black" type="button" data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+
+  
+
+  <div class="container-fluid mt-4 p-2">
+    <h4 class=" mb-1 fs-3 fw-bold ps-3 mt-4 text-center" style="color: rgb(255, 255, 255);">*Trending Merchs*</h4>
+    <div class="p-2 row d-flex justify-content-center trending-cards">
+      {% for i in trending_data %}
+        <div class="card col-md-3 p-1">
+          <img src="{{ i.image.url }}" class="card-img-top img-trending-cards p-0 m-0" alt="...">
+          <div class="card-body pb-0">
+            <h5 class="card-title p-0 m-0 ps-1">{{ i.pname }}</h5>
+            <h6 class="card-brand p-0 m-0 ps-1">{{ i.pbrand }}</h6>
+            <div class="d-flex gap-2 p-0 m-0 ps-1 pricedata">
+              <p class="card-text disprice p-0">{{ i.disprice }}$</p>
+              <p class="card-text price p-0">{{ i.price }}$</p>
+              <p class="card-text discount p-0">{{ i.discount }}%</p>
+            </div>
+            <a href="/productdetails/{{ i.id }}" class="viewprod btn btn-primary w-100 m-0">View Product</a>
+          </div>
+          <div class="rank">{{ forloop.counter }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+  <div class="container-fluid mt-3 p-2">
+    <h4 class=" mb-1 fs-3 fw-bold ps-3 mt-4 text-center" style="color: rgb(255, 255, 255);">*Hot Items & High Discount*</h4>
+    <div class="p-2 row d-flex justify-content-center trending-cards">
+      {% for i in discount_data %}
+        <div class="card col-md-3 p-1">
+          <img src="{{ i.image.url }}" class="card-img-top img-trending-cards p-0 m-0" alt="...">
+          <div class="card-body pb-0">
+            <h5 class="card-title p-0 m-0 ps-1">{{ i.pname }}</h5>
+            <h6 class="card-brand p-0 m-0 ps-1">{{ i.pbrand }}</h6>
+            <div class="d-flex gap-2 p-0 m-0 ps-1 pricedata">
+              <p class="card-text disprice p-0">{{ i.disprice }}$</p>
+              <p class="card-text price p-0">{{ i.price }}$</p>
+              <p class="card-text discount p-0">{{ i.discount }}%</p>
+            </div>
+            <a href="/productdetails/{{ i.id }}" class="viewprod btn btn-primary w-100 m-0">View Product</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+
+  <div class="row p-1 categories-cards container-fluid">
+    <h5 class="text-center fs-3 fw-medium text-light">*Categories*</h5>
+    <div class="cat-cards-cont gap-2">
+      {% for i in categories %}
+        <a class="m-2" href="/allproducts/{{ i.category }}">
+          <div class="card " style="width: 17rem;">
+            <img src="{% static 'images/cat' %}{{ forloop.counter }}.png" class="card-img-top" alt="..." style="height: 10rem; width: 90%;">
+            <div class="card-body">
+              <p class="card-text text-center">{{ i.category|title }}</p>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+  <script>
+    // Get the carousel element
+    const carousel = document.getElementById('carouselExampleAutoplaying');
+
+    // Function to handle scroll event and adjust opacity
+    function handleScroll() {
+      // Get the scroll position
+      const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+
+      // Calculate the opacity based on the scroll position
+      const opacity = 1 - scrollPosition / 600; // You can adjust the division value as needed
+
+      // Apply the opacity to the carousel
+      carousel.style.opacity = opacity.toFixed(2); // Limit the opacity to two decimal places
+      
+    }
+
+    // Attach the handleScroll function to the scroll event
+    window.addEventListener('scroll', handleScroll);
+
+    // Initial check on page load
+    handleScroll();
+  </script>
+</body>
+
+</html>
+{% endblock body %}

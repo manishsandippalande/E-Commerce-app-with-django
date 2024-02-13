@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% block body %}
+<style>
+    .container ul{
+        list-style: none;
+    }
+    .sec-about{
+        background-color: rgba(255, 255, 255, 0.14);
+        padding: 10vh;
+    }
+    strong{
+        color: aqua;
+    }
+</style>
+<div class="container" style="color: white;">
+    <header class="mt-5 mb-5">
+        <h1 class="text-center" style="color: rgb(21, 255, 0);">Welcome to MerchX</h1>
+        <p class="text-center" style="color: rgb(255, 255, 255);">Your Premier Destination for Stylish Men's Fashion</p>
+    </header>
+
+    <section class="sec-about mb-2">
+        <h2 class="text-center pb-2" style="color: rgb(255, 255, 255); text-shadow: 0px 0px 10px rgb(1, 255, 1);">Why Choose MerchX?</h2>
+        <ul style="color: rgb(255, 255, 255);" class='point text-center'>
+            <li><strong>Trendsetting Fashion:</strong> Stay ahead of the curve with our curated collection of men's clothing.</li>
+            <li><strong>Superior Quality:</strong> We prioritize quality in every product, ensuring durability and style.</li>
+            <li><strong>Easy Navigation:</strong> Our user-friendly interface makes shopping a breeze.</li>
+            <li><strong>Secure Shopping:</strong> Shop with confidence using the latest encryption technologies.</li>
+            <li><strong>Style Guides and Inspiration:</strong> Get tips and inspiration from our curated style guides.</li>
+            <li><strong>Responsive Customer Support:</strong> Our team is ready to assist you with any questions or concerns.</li>
+        </ul>
+    </section>
+
+    <section class="pt-5 sec-about">
+        <h2 class="text-center pb-2" style="color: rgb(251, 255, 249); text-shadow: 0px 0px 10px rgb(1, 255, 1);">How MerchX Works</h2>
+        <ul class="text-center">
+            <li><strong>Browse Our Collections:</strong> Explore our extensive range of men's clothing, footwear, accessories, and more.</li>
+            <li><strong>Easy Ordering Process:</strong> Our user-friendly checkout ensures a smooth and secure transaction.</li>
+            <li><strong>Fast and Reliable Delivery:</strong> We strive to deliver your orders swiftly and reliably.</li>
+            <li><strong>Stay Updated:</strong> Keep an eye on MerchX for exclusive promotions, new arrivals, and special offers.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p class="text-center p-5" style="color: rgb(21, 255, 0); text-shadow: 0px 0px 10px rgb(242, 255, 0);">MerchX is more than just a shopping app; it's your go-to destination for elevating your style effortlessly. Join our community of fashion-forward men and start your style journey with MerchX today!</p>
+    </footer>
+</div>
+{% endblock body %}

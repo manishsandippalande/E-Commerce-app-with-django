@@ -1,0 +1,147 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+  <style>
+    .trending-cards {
+      margin-top: 3vh;
+      max-width: 1200px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.4rem;
+      margin: auto;
+    }
+    
+    .trending-cards .card{
+      max-width: 250px;
+    }
+
+    .img-trending-cards {
+      height: 11.5rem;
+    }
+
+    .col-sm-6 {
+      width: 100%;
+    }
+
+    .card-title,
+    .card-brand {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card .disprice {
+      color: rgb(0, 238, 255);
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    .card .price {
+      color: rgb(255, 0, 0);
+    }
+
+    .card .discount {
+      color: rgb(43, 255, 0);
+    }
+
+    .card {
+      background-color: rgb(37, 37, 37);
+      border-radius: 10px;
+      margin: 2px;
+      overflow: hidden;
+    }
+
+    .card-body {
+      padding: 1vh 0.6vh;
+      color: rgb(255, 255, 255);
+      padding-bottom: 4px;
+      overflow: hidden;
+    }
+
+    .card-text {
+      height: fit-content;
+      margin-bottom: 0px;
+    }
+
+    .card-brand {
+      color: rgba(255, 255, 255, 0.618);
+      padding: 0;
+    }
+    .upbar{
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+    }
+    body{
+      background-color: black;
+    }
+    .sidebar-conts a , .sort-as a{
+      color: rgb(153, 255, 0);
+    }
+    
+    .btn-sby:hover{
+      color: rgb(153, 255, 0);
+      background-color: rgba(240, 248, 255, 0.233);
+    }
+    .cat{
+      margin-left: 10vh;
+    }
+    .sort, .cat{
+      margin-right: 10vh;
+      border: 2px solid rgb(1, 255, 1);
+      border-radius: 10px;
+      padding: 1vh;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="products d-flex-column">
+    <div class="upbar pt-2" >
+      <div class="cat">
+        <p class="pt-1 fw-medium text-light text-center">SHOP BY</p>
+        <div class="sidebar-conts">
+          <a href="/allproducts/T-Shirts" class="btn btn-sby">T-Shirts</a>
+          <a href="/allproducts/Shirts" class="btn btn-sby">Shirts</a>
+          <a href="/allproducts/perfumes" class="btn btn-sby">Perfumes</a>
+          <a href="/allproducts/Shoes" class="btn btn-sby">Footwear</a>
+          <a href="/allproducts/accessories" class="btn btn-sby">Accessories</a>
+        </div>
+      </div>
+      <div class="sort pt-2">
+        <p class="pt-1 fw-medium text-light text-center bg-gray">SORT BY</p>
+        <div class="sort-as">
+          <a href="/sort/0" class="btn btn-sby">Price: Low To High</a>
+          <a href="/sort/1" class="btn btn-sby">Price: High To Low</a>
+        </div>
+      </div>
+      
+    </div>
+    <div class="trending-cards" style="padding: 1vh; ">
+      {% for i in all_data %}
+      <div class="card col-md-3 col-sm-6 p-1">
+        <img src="{{ i.image.url }}" class="card-img-top img-trending-cards img-fluid p-0 m-0" alt="...">
+        <div class="card-body pb-0">
+          <h6 class="card-title p-0 m-0 ps-1 ">{{ i.pname }}</h6>
+          <p class="card-brand p-0 m-0 ps-1">{{ i.pbrand }}</p>
+          <div class="d-flex gap-2 p-0 m-0 ps-1">
+            <p class="card-text disprice p-0">{{ i.disprice }}$</p>
+            <p class="card-text price p-0">{{ i.price }}$</p>
+            <p class="card-text discount p-0">{{ i.discount }}%</p>
+          </div>
+          <a href="/addtocart/{{ i.id }}" class="btn btn-primary w-100 m-0">View Product</a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>  
+
+</body>
+
+{% endblock body %}

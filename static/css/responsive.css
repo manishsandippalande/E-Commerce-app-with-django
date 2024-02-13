@@ -1,0 +1,55 @@
+.card{
+    width: 15rem;
+}
+
+@media screen and (max-width:500px){
+    .card{
+        width: 4rem;
+    }
+    .img-trending-cards{
+        width: 100%;
+        height: 4rem;
+    }
+    .card-title, .card-brand{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .card-title
+    .card-brand{
+        font-size: 0.5;
+    }
+    .pricedata{
+        font-size: 0.7rem;
+    }
+    .viewprod{
+        padding: 1px;
+        font-size: 0.7rem;
+    }
+}
+@media screen and (max-width:800px) {
+    .card{
+        width: 12rem;
+    }
+    .img-trending-cards{
+        width: 100%;
+        height: 8rem;
+    }
+    .card-title, .card-brand{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .card-title
+    .card-brand{
+        font-size: 0.5;
+    }
+    .pricedata{
+        font-size: 0.7rem;
+    }
+    .viewprod{
+        padding: 1px;
+        font-size: 0.7rem;
+    }
+    
+}

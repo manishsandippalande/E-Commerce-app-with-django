@@ -1,0 +1,17 @@
+.cart-product{
+    width: 80%;
+    padding: 2vh;
+    border-radius: 20px;
+    border: 3px solid black;
+    display: flex;
+}
+
+.cart-product-title{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.cart-product-brand{
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.759);
+}

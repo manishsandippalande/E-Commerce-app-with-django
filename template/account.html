@@ -1,0 +1,79 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/accountpage.css' %}">
+    <style>
+        body{
+            background-color: black;
+        }
+        .profile-pic-cont{
+            width: 30vh;
+            height: 30vh;
+            border-radius: 100%;
+            overflow: hidden;
+            border: 3px solid rgb(60, 255, 0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .profile-pic-cont img{
+            height: 100%;
+        }
+        .prof-1{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: aliceblue;
+        }
+        .secondary-cont{
+            margin-top: 4vh;
+            border: 2px solid rgb(13, 255, 0);
+            border-radius: 15px;
+            padding: 2vh 4vh;
+        }
+        .lables{
+            color: rgb(255, 255, 255);
+            text-align: center;
+            font-weight: 500;
+            border: 0.8px solid rgb(0, 0, 0);
+        }
+        .values{
+            color: rgb(60, 255, 0);
+            text-align: center;
+            border: 0.8px solid rgb(255, 255, 255);
+            border-radius: 10px;
+            font-weight: 500;
+        }
+        .main-lbl{
+            color: #26ff00;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container pt-3">
+        <div class="primary-cont d-flex align-item-center">
+            <div class="profile-pic-cont">
+                <img src="{{ extrainfo.profilepic.url }}" alt="">
+            </div>
+            <div class="prof-1 ps-5">
+                <p class="prof-name fs-3 fw-bold">{{ accountinfo.first_name|title }}</p>
+                <p  class="prof-email fs-5 fw-bold">{{ accountinfo.username }}</p>
+            </div>
+        </div>
+        <div class="secondary-cont fw-bold">
+            <p class="main-lbl fs-3 fw-medium ps-3">Details</p>
+            <div class="phone-cont">
+                <p class="fs-6 ps-4 lables">Phone Numbers</p>
+                <p class="ps-4 fs-5 values">{{ extrainfo.phonenum }}</p>
+            </div>
+            <div class="address-cont">
+                <p class="fs-6 ps-4 lables">Address</p>
+                <p class="ps-4 fs-5 values">{{ extrainfo.address|title }}</p>
+            </div>
+        </div>
+    </div>    
+</body>
+
+{% endblock body %}

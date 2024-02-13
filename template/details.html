@@ -1,0 +1,72 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/detailspage.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
+    <style>
+        .btns-cont{
+            justify-content: end;
+        }
+        @media screen and (max-width:800px) {
+            .poster-cont{
+                width: 100%;
+            }
+            .row{
+                display: flex;
+                flex-direction: column;
+            }
+            .main-data{
+                width: 100%;
+            }
+            .price-data{
+                justify-content: right;
+                width: 100%;
+            }
+            .main-data .price{
+                text-decoration: line-through;
+            }
+            .btns-cont{
+                justify-content: center;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    
+    <div class="container pt-3">
+        <div class="row">
+            {% for msg in messages %}
+            {% if msg.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>{{ msg }}</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="poster-cont col-4">
+                <img src="{{ productdetail.image.url }}" alt="">
+            </div>
+            <div class="main-data g-1 col-8 ps-3">
+                <h3 class="prodtitle fs-3">{{ productdetail.pname }}</h3>
+                <h5 class="prodbrand fs-4">{{ productdetail.pbrand }}</h5>
+                <div class="price-data d-flex">
+                    <p class="disprice">{{ productdetail.disprice }}$</p>
+                    <p class="price">{{ productdetail.price }}$</p>
+                    <p class="discount">{{ productdetail.discount }}%</p>
+                </div>
+            </div>
+        </div>
+        <div class="discription fs-5 ps-1 pe-1 text-center">
+            ''{{ productdetail.description }}''
+        </div>
+        <div class="btns-cont d-flex gap-1">
+            <a href="/addtocart/{{ productdetail.id }}" class="btn btn-primary p-2">Add To Cart</a>
+            <a href="/addtowishlist/{{ productdetail.id }}" class="btn btn-success p-2">Add To Wishlist</a>
+        </div>
+    </div>
+</body>
+{% endblock body %}

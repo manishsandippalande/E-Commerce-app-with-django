@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+</head>
+<div class="container login-box">
+    <form action="/otpverify" method="post">
+        {% csrf_token %}
+        <div class="div">
+            <table>
+                <tr><td align="center"><b class="formheading" >OTP VERIFICATION</b></td></tr>
+                <tr>
+                    <td><input type="text" name="registration_data_email" id="email" class="inputs" style="margin-bottom: 2vh;" value="{{ registration_data_email }}" readonly></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="otp" id="otp" class="inputs" style="margin-bottom: 2vh;"></td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <input type="submit" value="Login" class="inputs-btn">
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+    </form>
+</div>
+{% endblock body %}

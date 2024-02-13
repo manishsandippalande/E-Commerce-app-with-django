@@ -1,0 +1,38 @@
+{% extends 'index.html' %}
+{ load static }
+{% block body %}
+
+<head>
+    <link rel="stylesheet" href="{ static 'css/style1.css' }">
+</head>
+<div class="container register-box">
+    <form action="/extrainfo" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <div class="div">
+            <table>
+                <tr><td align="center"><b class="formheading">User Information Form</b></td></tr>
+                <tr>
+                    <td><label for="Address">Address</label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="Address" id="Address" class="inputs"></td>
+                </tr>
+                <tr>
+                    <td><label for="Phone">Phone Number</label></td>
+                </tr>
+                <tr>
+                    <td><input type="tel" name="Phone" id="Phone" class="inputs"></td>
+                </tr>
+                <tr>
+                    <td><input type="file" name="profilepic" id="profilepic" class="inputs"  accept="image/*"></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="submit" value="Done" class="inputs-btn"></td>
+                </tr>
+
+            </table>
+            
+        </div>
+    </form>
+</div>
+{% endblock body %}

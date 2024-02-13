@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+{ load static }
+{% block body %}
+<head>
+    <link rel="stylesheet" href="{ static 'css/style1.css' }">
+</head>
+<div class="container login-box">
+    <form action="/login" method="post">
+        {% csrf_token %}
+        <div class="div">
+            <table>
+                <tr><td align="center"><b class="formheading" >LOGIN</b></td></tr>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                </tr>
+                <tr>
+                    <td><input type="email" name="email" id="email" class="inputs" style="margin-bottom: 2vh;"></td>
+                </tr>
+                <tr>
+                    <td><label for="pass">Password</label></td>
+                </tr>
+                <tr>
+                    <td><input type="password" name="pass" id="pass" class="inputs"></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="submit" value="Login" class="inputs-btn"></td>
+                </tr>
+
+            </table>
+            <div class="register-line">Not Registered? <a href="/register">Register</a></div>
+        </div>
+    </form>
+</div>
+{% endblock body %}

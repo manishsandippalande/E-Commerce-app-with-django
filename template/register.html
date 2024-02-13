@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+<head>
+    <link rel="stylesheet" href="{ static 'css\style1.css' }">
+</head>
+<div class="container register-box">
+    <form action="/register" method="post">
+        {% csrf_token %}
+        <div class="div">
+            <table>
+                <tr><td><p class="formheading text-danger">{{ errormsg }}</p></td></tr>
+                <tr><td align="center"><b class="formheading">REGISTER</b></td></tr>
+                <tr>
+                    <td><label for="fname">Name</label></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="fname" id="fname" class="inputs"></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email</label></td>
+                </tr>
+                <tr>
+                    <td><input type="email" name="email" id="email" class="inputs" required></td>
+                </tr>
+                <tr>
+                    <td><label for="pass">Password</label></td>
+                </tr>
+                <tr>
+                    <td><input type="password" name="pass" id="pass" class="inputs" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"></td>
+                </tr>
+                <tr>
+                    <td><label for="cpass">Confirm Password</label></td>
+                </tr>
+                <tr>
+                    <td><input type="password" name="cpass" id="cpass" class="inputs"></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="submit" value="Register" class="inputs-btn"></td>
+                </tr>
+
+            </table>
+            <div class="login-line">Already Registered? <a href="/login">Login</a></div>
+        </div>
+    </form>
+    
+</div>
+{% endblock body %}

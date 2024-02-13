@@ -1,0 +1,94 @@
+body{
+    background-color: whitesmoke;
+}
+.navbar{
+    background-color: rgb(43, 255, 0);
+}
+.nav-link{
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: rgb(0, 0, 0);
+}
+.navbar-brand{
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: white;
+    text-shadow: 2px 2px 2px rgb(255, 0, 0);
+}
+.nav-link:hover{
+    color: rgb(0, 0, 0);
+}
+.navbar-brand:hover{
+    color: rgb(0, 0, 0);
+}
+.foot-cont{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 212, 127, 0.832);
+}
+.footer-inn a{
+    display: flex;
+    text-decoration: none;
+    color: black;
+    font-size: 1rem;
+    font-weight: 500;
+}
+footer .foot-cont{
+    border: 3px solid rgb(0, 0, 0);
+}
+.inputs{
+    width: 45vh;
+    padding: 1.2vh 1vh;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 10px;
+    outline: none;
+    border: 2px solid rgb(0, 255, 0);
+    margin: 1.7px;
+}
+.inputs:focus{
+    transform: scale(105%);
+}
+.inputs-btn{
+    padding: 0.8vh 2.5vh;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-top: 5px;
+    background-color: chartreuse;
+    border-radius: 7px;
+    border: 2px solid green;
+}
+
+/* table */
+.div{
+    background-color: rgba(255, 142, 142, 0.441);
+    padding: 5.5vh 7vh;
+    border-radius: 13px;
+    width: fit-content;
+    padding-bottom: 1.2vh;
+}
+.register-box, .login-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3.3vh;
+    margin-bottom: 5vh;
+    height: 80vh;
+}
+
+.login-line, .register-line{
+    display: flex;
+    justify-content: right;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.login-line a, .register-line a{
+    text-decoration: none;
+}
+.formheading{
+    font-size: 1.3rem;
+    color: rgb(93, 0, 255);
+}

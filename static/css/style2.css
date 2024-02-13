@@ -1,0 +1,67 @@
+a{
+    text-decoration: none;
+}
+
+.poster-div{
+    background: linear-gradient(45deg, transparent 15px, #0099ff 15px);
+}
+
+.price{
+    text-decoration: line-through;
+}
+
+.img-trending-cards{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    filter: brightness(0.9);
+}
+.card{
+    background-color: rgb(37, 37, 37);
+    border-radius: 10px;
+}
+.card-body{
+    padding: 1vh 0.6vh;
+    color: rgb(255, 255, 255);
+    padding-bottom: 4px;
+    overflow: hidden;
+}
+.card-text{
+    height: fit-content;
+    margin-bottom: 0px;
+}
+.card-brand{
+    color: rgba(255, 255, 255, 0.618);
+    padding: 0;
+}
+.card{
+    padding-bottom: 0px;
+    /* margin: 1px; */
+}
+.row{
+    --bs-gutter-x: 0rem;
+}
+.trending-cards .card{
+    border: 2px solid rgb(43, 255, 0);
+}
+.trending-cards .card .btn{
+    font-weight: 500;
+    color: black;
+    background-color: rgb(43, 255, 0);
+    border: 2px solid rgb(43, 255, 0);
+}
+.card .disprice{
+    color: rgb(0, 238, 255);
+    font-weight: 500;
+}
+.card .price{
+    color: rgb(255, 0, 0);
+}
+.card .discount{
+    color: rgb(43, 255, 0);
+}
+.card-title, .card-brand{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

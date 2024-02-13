@@ -1,0 +1,44 @@
+{% extends 'index.html' %}
+{% block body %}
+<style>
+    h1 {
+            color: #11ff00;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+</style>
+<header>
+    <h1 class="text-center p-5">Welcome To MerchX</h1>
+</header>
+
+<section>
+    <form action="/contactpage" method="post">
+        {% csrf_token %}
+        <label for="message" style="color: white;">Your Message:</label>
+        <textarea id="message" name="msg" required></textarea>
+        <button class="btn btn-primary" style="width: 15vh;" type="submit">Submit Query</button>
+    </form>
+</section>
+{% endblock body %}
